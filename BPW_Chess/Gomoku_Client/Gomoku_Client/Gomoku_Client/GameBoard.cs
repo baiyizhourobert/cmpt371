@@ -38,19 +38,19 @@ namespace GameComponent
         private bool isStart = true;
         // Whether we play chess
         private bool isOurTurn = false;
-        // 1表示黑，2表示粉，3表示白
+        // 1means black，2means pink，3means white
         private int color = 1;
-        // 记录每个位置的颜色，其中0表示空位
+        // rocord every location's color, 0 means this location is empty
         private int[,] map = new int[gameSize, gameSize];
-        // 水平计数
+        // horizontal count
         private int hSum;
-        // 垂直计数
+        // vertical count
         private int vSum;
-        // 左斜线计数
+        // left oblique count
         private int lSum;
-        // 右斜线计数
+        // right oblique count
         private int rSum;
-        // 棋盘大小
+        // size of the plate
         private readonly int boradSize;
 
         // game end events
@@ -73,7 +73,7 @@ namespace GameComponent
                 isOurTurn = true;
             }
             color = Configuration.playerID;
-            // 把己方的棋子显示在左上角
+            // show your own chess color at left up corner
             AddChessman(IndexToScreen(-1, -1), color);
         }
 
@@ -334,7 +334,7 @@ namespace GameComponent
                     {
                         PlaceChess(p);
                         isOurTurn = false;
-                        // 否则向服务器发送消息，附带上自己的playerID，由服务器端转发到其他客户端
+                        // use own playerid, let server sned to other client
                         Configuration.client.SendToServer("PlaceChess," + p.X + "," + p.Y + "," + Configuration.playerID);
                     }
                 }
@@ -362,7 +362,7 @@ namespace GameComponent
                 OnGameEnd(this, new GameEndEventArgs(color));
                 isStart = false;
             }
-            // 如果是上一位玩家，那么现在就是我们下棋
+           
             if ((this.color - color + 3) % 3 == 1)
             {
                 isOurTurn = true;
@@ -379,11 +379,11 @@ namespace GameComponent
         public void ReStartGame()
         {
             Createbackgroudimage();
-            // 把己方的棋子显示在左上角
+            // show own chess color at left corner
             AddChessman(IndexToScreen(-1, -1), color);
             map = new int[gameSize + 1, gameSize + 1];
             isStart = true;
-            // 重新将host置为先手
+            // set host play chess first
             if (Configuration.playerID == 1)
             {
                 isOurTurn = true;
