@@ -51,7 +51,7 @@ namespace Gomoku
 
         private void StartGameButton_Click(object sender, EventArgs e)
         {
-            // 点击游戏后，向服务器发起开始游戏请求
+            //  after click start game, send server request of starting the game
             Configuration.client.SendToServer("StartGame,"+Configuration.playerID.ToString());
         }
     }
