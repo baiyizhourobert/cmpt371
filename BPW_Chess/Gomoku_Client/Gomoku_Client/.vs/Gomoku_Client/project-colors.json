@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "6ef5c963-2f3f-4d71-bfcb-56803c592a79": {
+      "ProjectGuid": "6ef5c963-2f3f-4d71-bfcb-56803c592a79",
+      "DisplayName": "Gomoku_Client",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
