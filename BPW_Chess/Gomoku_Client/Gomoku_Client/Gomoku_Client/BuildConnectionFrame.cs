@@ -34,7 +34,7 @@ namespace Gomoku
             }
             if(Configuration.client.ConnectToServer(serverIP, serverPort))
             {
-                // 连接到服务器
+                // link to the server
                 Configuration.client.InitReceiveThread();
                 this.DialogResult = DialogResult.OK;
                 this.Close();
